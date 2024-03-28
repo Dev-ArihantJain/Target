@@ -6,7 +6,7 @@
 
         background-repeat: repeat;
         height: 100vh;
-        background: url("/web/p1/img/icon.png");
+        background: url("icon.png");
         background-size: 50px 50px;
         background-color: rgba(255, 255, 255, 0.6);
         background-blend-mode: screen;
