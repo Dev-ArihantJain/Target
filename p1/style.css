@@ -1,0 +1,138 @@
+    @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+
+    body {
+        margin: 0%;
+        padding: 0%;
+
+        background-repeat: repeat;
+        height: 100vh;
+        background: url("/web/p1/img/icon.png");
+        background-size: 50px 50px;
+        background-color: rgba(255, 255, 255, 0.6);
+        background-blend-mode: screen;
+        background-position: relative;
+
+        animation: bg-scrolling-reverse 5s infinite;
+        animation-timing-function: linear;
+    }
+
+    /*  
+data:image/png;
+base64,
+iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA //8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC
+
+*/
+    @keyframes bg-scrolling-reverse {
+        0% {
+            background-position: 0px -50px;
+        }
+    }
+
+
+
+    .navbar {
+        display: flex;
+        border: 2px solid black;
+        height: 5vh;
+        width: 100%;
+        background-color: rgba(46, 21, 69, 0.849);
+        margin: 0%;
+        padding: 0%;
+        position: sticky;
+
+    }
+
+    .logobtn {
+        align-items: center;
+        justify-content: center;
+
+        min-width: 50px;
+        max-width: 100px;
+        padding: auto;
+        font-family: 'Black Ops One', system-ui;
+        font-size: 1.5rem;
+        text-decoration: wavy;
+        background-color: transparent;
+        color: aliceblue;
+        border-style: none;
+    }
+
+    .logo {
+        width: 100%;
+        justify-content: left;
+        margin: auto;
+        align-items: center;
+        padding-left: 1vw;
+        height: 100%;
+        display: flex;
+
+
+    }
+
+    #logo_img {
+        height: 5vh;
+        display: inline;
+        justify-content: center;
+        align-items: center;
+        padding: auto;
+
+
+    }
+
+    .menu {
+        display: flex;
+        width: 100%;
+        justify-content: right;
+        align-items: center;
+        gap: max(1rem, 10%);
+        color: aliceblue;
+        padding-right: 10px;
+
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        border: 2px solid black;
+        align-items: center;
+        justify-items: center;
+        height: 5vh;
+        margin: 0%;
+        width: 100%;
+        background-color: rgba(255, 235, 205, 0.797);
+        background-blend-mode: darken;
+    }
+
+    .playbox {
+        height: 90vh;
+        width: 100%;
+
+    }
+
+    .circle {
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        background-color: red;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        color: white;
+        user-select: none;
+    }
+
+
+
+
+    .start_button {
+
+        justify-content: center;
+        background-color: rgba(46, 21, 69, 0.916);
+        align-items: center;
+        margin: auto;
+        justify-items: center;
+        color: azure;
+        text-align: center;
+        font-size: large;
+    }
