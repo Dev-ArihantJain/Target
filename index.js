@@ -102,8 +102,8 @@ function done() {
 
 
 ht = document.querySelector(".playbox");
-let mh = ht.offsetHeight;
-let mw = ht.offsetWidth;
+// let mh = ht.offsetHeight;
+// let mw = ht.offsetWidth;
 
 c = document.getElementsByClassName("circle");
 
@@ -119,16 +119,49 @@ reload();
 start();
 
 
+let mouseX = 0, mouseY = 0;
+let isMouseMoving = false;
+
+// Throttle interval in milliseconds
+
+// let throttleTimeout = null;
+// const throttleInterval = 500; 
+
+
+ht.addEventListener("mousemove", (event) => {
+
+  //use this for custom cursor like (img, icon etc)
+  // const mouseX = event.clientX - cursor.clientWidth/2;
+  // const mouseY = event.clientY - cursor.clientHeight/2;
+  mouseX = event.clientX;
+  mouseY = event.clientY;
+  isMouseMoving = true;
+  
+  //throttle mousemove event
+
+//   if (!throttleTimeout) {
+//     throttleTimeout = setTimeout(() => {
+//       //add isMouseMoving condition here to throttle mousemove event
+//       throttleTimeout = null;
+//     }, throttleInterval);
+//   }
+});
+
+function updateCursor() {
+  if (isMouseMoving) {
+    custom_cursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+    isMouseMoving = false;
+  }
+  requestAnimationFrame(updateCursor); // Continue the animation loop for the next frame 
+}
+
+requestAnimationFrame(updateCursor);
+
+
 custom_cursor = document.querySelector(".custom_cursor");
 body= document.querySelector("body");
 cursor_btn = document.querySelector(".cursor_btn");
 
-ht.addEventListener("mousemove", (event) => {
-  //use this for custom cursor like (img, icon etc)
-  // const x = event.clientX - cursor.clientWidth/2;
-  // const y = event.clientY - cursor.clientHeight/2;
-  custom_cursor.style.transform =`translate(${event.clientX}px, ${event.clientY}px)`;
-});
 
 ht.addEventListener("mouseenter", (event) => {
   if (cval == 0) {
