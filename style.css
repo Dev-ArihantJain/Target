@@ -6,7 +6,7 @@
 
         background-repeat: repeat;
         height: 100vh;
-        background: url("icon.png");
+        background: url("/web/Target/img/icon.png");
         background-size: 50px 50px;
         background-color: rgba(255, 255, 255, 0.6);
         background-blend-mode: screen;
@@ -14,6 +14,8 @@
 
         animation: bg-scrolling-reverse 5s infinite;
         animation-timing-function: linear;
+        overflow: hidden;
+
     }
 
     /*  
@@ -39,6 +41,8 @@ iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNI
         margin: 0%;
         padding: 0%;
         position: sticky;
+        justify-content: center;
+        align-items: center;
 
     }
 
@@ -59,7 +63,7 @@ iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNI
 
     .logo {
         width: 100%;
-        justify-content: left;
+        justify-content: center;
         margin: auto;
         align-items: center;
         padding-left: 1vw;
@@ -111,8 +115,8 @@ iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNI
 
     .circle {
         border-radius: 50%;
-        height: 30px;
-        width: 30px;
+        height: 4vh;
+        width: 4vh;
         background-color: red;
         position: relative;
         justify-content: center;
@@ -135,4 +139,33 @@ iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNI
         color: azure;
         text-align: center;
         font-size: large;
+    }
+
+
+
+    .custom_cursor {
+        position: absolute;
+        display: none;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: rgb(0, 0, 0);
+
+    }
+
+    .cursor_btn {
+        position: relative;
+        top: 1vh;
+        left: 1vh;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        cursor: inherit;
+        font-size: 30px;
+        border: 2px solid black;
+        user-select: none;
     }
