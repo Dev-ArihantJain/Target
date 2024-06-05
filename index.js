@@ -1,5 +1,3 @@
-console.log("hello");
-
 function change() {
   a = Math.random();
   return a;
@@ -10,9 +8,6 @@ function setsec() {
 }
 
 async function Timer() {
-  // sec=10;
-  // function setsec() {sec=10;// }
-
   timer = setInterval(function () {
     document.getElementById("Timer").innerText = "00:" + sec;
     console.log(sec);
@@ -26,21 +21,65 @@ async function Timer() {
 function stop() {
   setTimeout(function () {
     clearInterval(timer);
-    reload();
     document.getElementById("circle").removeEventListener("click", next);
+    reload();
     start();
   }, 30000);
 }
 
+function next() {
+  count = count + 1;
+  if (hs < count) {
+    hs++;
+  }
+  // c[0].style.top = mh * change() * 0.080 + "%";
+  // c[0].style.left = mw * change() * 0.080 + "%";
+  c[0].style.top = change() *90  + "%";
+  c[0].style.left = change() * 90 + "%";
 
+  document.getElementById("score").innerText = "Score = " + count;
+}
 
+function start() {
+  q = document.getElementById("start_button");
+  q.addEventListener("click", game);
+  q.addEventListener("click", stop);
+  q.addEventListener("click", () => {
+    document.getElementById("score").innerText = "Score = " + count;
+  });
+}
 
+function game() {
+  element = document.getElementById("start_button");
+  element.remove();
 
-ht = document.querySelector(".playbox");
-let mh = ht.offsetHeight;
-let mw = ht.offsetWidth;
+  bt = document.createElement("div");
+  bt.className = "Timer";
+  //or
+  bt.id = "Timer";
 
-c = document.getElementsByClassName("circle");
+  element = document.getElementById("score");
+  element.before(bt);
+
+  document.getElementById("circle").addEventListener("click", next);
+  sec = 29;
+  (() => {
+    Timer();
+  })();
+}
+
+function reload() {
+  document.getElementById("highscore").innerText = "High Score = " + hs;
+  count = 0;
+
+  done();
+
+  // c[0].style.top = mh * change() * 0.080 + "%";
+  // c[0].style.left = mw * change() * 0.080 + "%";
+  c[0].style.top = change() * 90  + "%";
+  c[0].style.left = change() * 90 + "%";
+}
+
 
 function done() {
   return new Promise((resolve, reject) => {
@@ -54,76 +93,73 @@ function done() {
 
     element = document.getElementById("score");
     element.before(bt);
-
     resolve();
   });
 }
 
+
+
+
+
+ht = document.querySelector(".playbox");
+let mh = ht.offsetHeight;
+let mw = ht.offsetWidth;
+
+c = document.getElementsByClassName("circle");
+
 let count = 0;
 let hs = 0;
+cval=0;
 
-function reload() {
-  document.getElementById("highscore").innerText = "High Score = " + hs;
-  count = 0;
 
-  done();
 
-  // use this instead this don't work..............
-
-  // element=document.getElementById("Timer");
-  // element.remove();
-
-  // bt=document.createElement("button");
-  // bt.className="start_button"; bt.id="start_button";
-  // bt.innerHTML="Start";
-
-  // element=document.getElementById("score");
-  // element.before(bt);
-
-  c[0].style.top = mh * change() * 0.9 + "px";
-  c[0].style.left = mw * change() * 0.9 + "px";
-}
 
 reload();
 
-// document.getElementById("circle").addEventListener("click", function(){count=count+1;});
-
-function next() {
-  count = count + 1;
-  if (hs < count) {
-    hs++;
-  }
-  c[0].style.top = mh * change() * 0.9 + "px";
-  c[0].style.left = mw * change() * 0.9 + "px";
-  document.getElementById("score").innerText = "Score = " + count;
-}
-
-function start() {
-  q = document.getElementById("start_button");
-  q.addEventListener("click", game);
-  q.addEventListener("click", stop);
-  q.addEventListener("click", () => {
-    document.getElementById("score").innerText = "Score = " + count;
-  });
-}
-
 start();
 
-function game() {
-  element = document.getElementById("start_button");
-  element.remove();
 
-  bt = document.createElement("div");
-  bt.className = "Timer";
-  bt.id = "Timer";
+custom_cursor = document.querySelector(".custom_cursor");
+body= document.querySelector("body");
+cursor_btn = document.querySelector(".cursor_btn");
 
-  element = document.getElementById("score");
+ht.addEventListener("mousemove", (event) => {
+  //use this for custom cursor like (img, icon etc)
+  // const x = event.clientX - cursor.clientWidth/2;
+  // const y = event.clientY - cursor.clientHeight/2;
+  custom_cursor.style.transform =`translate(${event.clientX}px, ${event.clientY}px)`;
+});
 
-  element.before(bt);
-
-  document.getElementById("circle").addEventListener("click", next);
-  sec = 29;
-  (() => {
-    Timer();
-  })();
+ht.addEventListener("mouseenter", (event) => {
+  if (cval == 0) {
+  custom_cursor.style.display = "block";
+  body.style.cursor = "none";
 }
+});
+ht.addEventListener("mouseleave", (event) => {
+  if (cval == 0) {
+    
+    custom_cursor.style.display = "none";
+    body.style.cursor = "auto";
+  }
+});
+
+cursor_btn.addEventListener("click", (event) => {
+  
+  if (cval == 1) {
+    custom_cursor.style.display = "block";
+    body.style.cursor = "none";
+    ht.style.cursor = "none";
+    cursor_btn.innerText = "+";
+    cval = 0;
+    return;
+  } 
+  if (cval == 0) {
+    custom_cursor.style.display = "none";
+    body.style.cursor = "auto";
+    ht.style.cursor = "crosshair";
+    cursor_btn.innerHTML = "&middot;";
+  cval = 1;
+  return;
+  }
+});
